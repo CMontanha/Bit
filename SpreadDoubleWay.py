@@ -1,17 +1,3 @@
-import requests
-import os
-import time
-import json
-from time import gmtime, strftime
-
-
-AmountResults = 1
-N = 1
-StackValue = 0.01
-
-Market = input("Currency to search: ")
-
-#Direction A - BTC-ETH-COIN-BTC
 #--------------------------------------------------------------------
 marketSell1 = "BTC-ETH"
 marketSell2 = "ETH-" + Market
@@ -97,7 +83,7 @@ try:
   #Spread
   #--------------------------------------------------------------------------------------------------
     SpreadA = ((N*Rate3*100)/(N*Rate2*Rate1))
-    SpreadB = ((N*Rate4*100)/(N*Rate6*Rate5))
+    SpreadB = ((N*Rate6*Rate5*100)/(N*Rate4))
   
   #Condition Volume 1st Order
   #--------------------------------------------------------------------------------------------------
@@ -106,8 +92,8 @@ try:
     print("Direction A", Market, " ", SpreadA, " ", TestConditionA, " ", strftime("%d-%m-%Y %H:%M:%S", gmtime()))
     print("Direction B ", Market, " ", SpreadB, " ", TestConditionB, " ", strftime("%d-%m-%Y %H:%M:%S", gmtime()))
     f = open(Market+".txt", 'a')
-    f.write("Direction A" + Market + " " + str(SpreadA) + " " + str(TestConditionA) + " " + strftime("%d-%m-%Y %H:%M:%S", gmtime()) + "\n")
-    f.write("Direction B" + Market + " " + str(SpreadB) + " " + str(TestConditionB) + " " + strftime("%d-%m-%Y %H:%M:%S", gmtime()) + "\n")
+    f.write("Direction A" + " " +  Market + " " + str(SpreadA) + " " + str(TestConditionA) + " " + strftime("%d-%m-%Y %H:%M:%S", gmtime()) + "\n")
+    f.write("Direction B" + " " +  Market + " " + str(SpreadB) + " " + str(TestConditionB) + " " + strftime("%d-%m-%Y %H:%M:%S", gmtime()) + "\n")
     f.close()
 
   time.sleep(60)
